@@ -1,4 +1,5 @@
-const elem = require('./ElementsCadastro').Elements
+const elem = require('./ElementsCadastro').Elements;
+import Utils from "../../Utils";
 
 class ActionsCadastro {
 
@@ -23,8 +24,14 @@ class ActionsCadastro {
     uploadDocumento(arquivo) {
         cy.fixture(arquivo, null).as('fixtures')
         cy.get('input[type="file"]').selectFile('@fixtures', {force: true})
-
     }
+
+    confirmarCadastro() {
+        cy.get("button[type='submit']").click()
+        cy.get("button[class='swal2-confirm swal2-styled']").click()
+    }
+
+
 }
 
 export default new ActionsCadastro()
